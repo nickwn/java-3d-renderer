@@ -1,0 +1,131 @@
+html {
+  font-family: "Raleway", Arial, sans-serif;
+  color: #333333;
+  background-color: #FFFCF1;
+}
+
+body {
+  margin: 0px;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  margin: 0px;
+  color: white;
+  background-color: black;
+  box-shadow: 0px 1px 5px grey;
+}
+
+.navbar ul {
+  margin: 0px;
+  padding: 0px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  list-style-type: none;
+  overflow: hidden;
+  height: 40px;
+}
+
+.navbar li {
+
+}
+
+.navbar li.float-left {
+  float: left;
+}
+
+.navbar li.float-right {
+  float: right;
+}
+
+.navbar li a {
+  display: block;
+  line-height: 40px;
+  width: 100px;
+  border: 1px solid black;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar li a:hover {
+  border: 1px solid white;
+}
+
+.navbar input {
+  border: 1px solid black;
+  border-color: black;
+  background-color: black;
+  color: white;
+  font-family: "Raleway", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 38px;
+  margin-left: 20px;
+  padding-left: 10px;
+}
+
+input[type=text]:focus {
+    border-color: white;
+    outline: none;
+}
+
+input[type=text]:hover {
+    border-color: white;
+}
+
+.navbar ::-webkit-input-placeholder {
+   color: white;
+   font-family: "Raleway", Arial, sans-serif;
+   font-size: 16px;
+}
+
+.navbar :-moz-placeholder { /* Firefox 18- */
+   color: white;
+   font-family: "Raleway", Arial, sans-serif;
+   font-size: 16px;
+}
+
+.navbar ::-moz-placeholder {  /* Firefox 19+ */
+   color: white;
+   font-family: "Raleway", Arial, sans-serif;
+   font-size: 16px;
+}
+
+.navbar :-ms-input-placeholder {
+   color: white;
+   font-family: "Raleway", Arial, sans-serif;
+   font-size: 16px;
+}
+
+/* ---------- General Style ---------- */
+.content {
+  padding-top: 20px;
+  padding-bottom: 100%;
+  font-family: "Times New Roman", serif;
+  font-size: 17px;
+}
+
+.content * {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.content h1 {
+  font-size: 30px;
+  line-height: 2;
+}
+
+.content h2 {
+  line-height: 2;
+}
+
+.content p {
+  line-height:1.6;
+}
+
+.content ul {
+  max-width: 750px;
+  line-height: 1.4;
+}

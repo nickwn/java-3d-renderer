@@ -1,17 +1,23 @@
-import njine.AppConfig;
-import njine.Camera;
-import njine.Mesh;
-import njine.RenderSurface;
-import njine.Renderer;
-import njine.Vec3;
-import njine.World;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import njine.assets.AssetManager;
+import njine.camera.Camera;
+import njine.camera.FPCam;
+import njine.entity.Mesh;
+import njine.entity.Model;
+import njine.math.Vec3;
+import njine.render.RenderSurface;
+import njine.render.Renderer;
+import njine.world.AppConfig;
+import njine.world.World;
 
 
 public class Main					
 {
 	public static void main(String[] args)
 	{
-		///* commenting out a comment
+		/* commenting out a comment
 		Vec3[] verts = {new Vec3(-1, -1, 1), 
 						new Vec3(-1, -1, -1),
 						new Vec3(-1, 1, 1),
@@ -24,7 +30,7 @@ public class Main
 		int[] tris = {0, 1, 5, 0, 5, 4,
 					  0, 1, 2, 1, 3, 2,
 					  1, 5, 7, 1, 3, 7};
-		//*/
+		*/
 		
 		/*
 		Vec3 verts[] = { 
@@ -61,13 +67,26 @@ public class Main
 				    32,  34,  33 };
 		*/
 		
+		Mesh m = null;
+			
+		try {
+			m = (Mesh) AssetManager.loadAsset("teapot.obj");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 		Box b = new Box();
-		b.getModel().setMesh(new Mesh(verts, tris));
-		b.getTransform().setGlobalPosition(new Vec3(0, 0, -5));
+		//b.getModel().setMesh(new Mesh(verts, tris));
+		b.getModel().setMesh(m);
+		b.getTransform().setGlobalPosition(new Vec3(0, 0, 0));
 		
-		Camera cam = new Camera(90, .1, 1000);
-		cam.getTransform().setGlobalPosition(new Vec3(0, 2, 0));
-		cam.getTransform().setGlobalRotation(new Vec3(30, 0, 0));
+		Camera cam = new FPCam();
+		cam.getTransform().setGlobalPosition(new Vec3(0, 2, 8));
+		cam.getTransform().setLocalRotation(new Vec3(20, 0, 0));
 		
 		AppConfig config = new AppConfig();
 		World world = new World(config);		

@@ -1,4 +1,4 @@
-package njine;
+package njine.world;
 
 public class AppConfig 
 {

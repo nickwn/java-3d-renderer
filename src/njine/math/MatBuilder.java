@@ -1,4 +1,4 @@
-package njine;
+package njine.math;
 import static java.lang.Math.*;
 
 public final class MatBuilder 

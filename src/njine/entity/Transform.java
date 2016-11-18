@@ -1,4 +1,9 @@
-package njine;
+package njine.entity;
+
+import njine.math.Mat44;
+import njine.math.MatBuilder;
+import njine.math.Vec3;
+
 
 public class Transform 
 {

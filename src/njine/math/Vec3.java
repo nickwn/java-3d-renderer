@@ -1,4 +1,4 @@
-package njine;
+package njine.math;
 
 public class Vec3 
 {
@@ -52,6 +52,11 @@ public class Vec3
 	public Vec3 multiply(double d)
 	{
 		return new Vec3(x*d, y*d, z*d);
+	}
+	
+	public Vec3 add(Vec3 v)
+	{
+		return new Vec3(x+v.x, y+v.y, z+v.z);
 	}
 	
 	public String toString()

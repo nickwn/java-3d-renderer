@@ -1,4 +1,4 @@
-package njine;
+package njine.render;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 

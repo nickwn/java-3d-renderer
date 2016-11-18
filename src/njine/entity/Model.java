@@ -1,4 +1,5 @@
-package njine;
+package njine.entity;
+
 
 public class Model 
 {

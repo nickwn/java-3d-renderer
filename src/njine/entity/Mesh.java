@@ -1,5 +1,7 @@
-package njine;
+package njine.entity;
 import java.util.ArrayList;
+
+import njine.math.Vec3;
 
 
 public class Mesh 

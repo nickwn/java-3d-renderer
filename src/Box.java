@@ -1,7 +1,7 @@
-import njine.Entity;
-import njine.Model;
-import njine.Transform;
-import njine.Vec3;
+import njine.entity.Entity;
+import njine.entity.Model;
+import njine.entity.Transform;
+import njine.math.Vec3;
 
 
 public class Box extends Entity

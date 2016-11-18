@@ -1,7 +1,10 @@
-package njine;
+package njine.camera;
+
+import njine.entity.Transform;
+import njine.math.Vec3;
 
 
-public class Camera 
+public abstract class Camera 
 {
 	private Transform transform;
 	private double nearClip, farClip, fov;
@@ -33,5 +36,9 @@ public class Camera
 	{
 		return farClip;
 	}
+	
+	public abstract void setup();
+	
+	public abstract void update();
 	
 }

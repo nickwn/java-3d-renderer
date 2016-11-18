@@ -1,4 +1,4 @@
-package njine;
+package njine.math;
 
 public class Vec2 
 {

@@ -1,4 +1,4 @@
-package njine;
+package njine.world;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.concurrent.Executors;
@@ -6,6 +6,18 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
+
+import njine.assets.AssetManager;
+import njine.assets.OBJLoader;
+import njine.camera.Camera;
+import njine.entity.Entity;
+import njine.entity.Mesh;
+import njine.math.Mat44;
+import njine.math.Vec3;
+import njine.render.RenderSurface;
+import njine.render.Renderer;
+import njine.render.RendererThread;
+import njine.util.Input;
 
 
 public class World 
@@ -28,7 +40,7 @@ public class World
 	public void begin()
 	{
 		if(camera == null)
-			setCamera(new Camera(90, 0.1, 1000));
+			throw new IllegalStateException("must begin world with at least one camera");
 		if(entities.size() == 0)
 			throw new IllegalStateException("must begin world with at least one entity");
 		
@@ -38,10 +50,13 @@ public class World
 		window.setVisible(true);
 		window.setResizable(false);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.addMouseMotionListener(Input.getInstance());
+		window.addKeyListener(Input.getInstance());
 		RenderSurface surface = new RenderSurface();
 		window.add(surface);
 		
 		setupEntities();
+		camera.setup();
 		
 		RendererThread rendererThread = new RendererThread(renderer, surface, window);
 		rendererThread.start();
@@ -52,7 +67,8 @@ public class World
 	public void setCamera(Camera camera)
 	{
 		this.camera = camera;
-		renderer.init(config.winHeight, config.winWidth, camera.getTransform(), camera.getFOV(), camera.getNearClip(), camera.getFarClip());
+		Mat44 wToC = camera.getTransform().getGlobalMat().invert().multiply(camera.getTransform().getLocalMat().invert());
+		renderer.init(config.winHeight, config.winWidth, wToC, camera.getFOV(), camera.getNearClip(), camera.getFarClip());
 	}
 	
 	public void addEntity(Entity e)
@@ -111,6 +127,9 @@ public class World
 		{
 			public void run() 
 			{				
+				camera.update();
+				Mat44 wToC = camera.getTransform().getGlobalMat().invert().multiply(camera.getTransform().getLocalMat().invert());
+				renderer.setWorldToCam(wToC);
 				for(Entity e: entities)
 					e.update();
 				

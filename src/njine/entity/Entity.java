@@ -1,4 +1,6 @@
-package njine;
+package njine.entity;
+
+import njine.math.Vec3;
 
 
 public abstract class Entity 
